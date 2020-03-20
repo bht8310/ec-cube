@@ -139,6 +139,30 @@ Styleguide 2.0
     .c-headerBar__shopTitle .fa-angle-right {
       padding-left: 15px;
       font-size: 21px; }
+  .c-headerBar__isMaintenance {
+    display: table-cell;
+    visibility: hidden;
+    padding: 0 20px;
+    height: 65px;
+    font-size: 16px;
+    color: #eeb128;
+    font-weight: bold;
+    vertical-align: middle;
+    text-align: right;
+    -webkit-animation: blink 1s ease-in-out infinite alternate;
+            animation: blink 1s ease-in-out infinite alternate; }
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes blink {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
   .c-headerBar__userMenu {
     display: table-cell;
     padding: 0 20px;

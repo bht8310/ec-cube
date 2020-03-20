@@ -208,3 +208,36 @@ var searchWord = function (searchText, el) {
         }
     });
 };
+
+//メンテナンスモードかチェックしヘッダの表示を切り替える
+var checkMaintenance = function(getMaintenanceUrl) {
+    if(! getMaintenanceUrl) return;
+
+    var element = $('.c-headerBar__isMaintenance');
+
+    if(! element.length) return;
+
+    var callback=function(data,status,xhr) {
+
+        if(status !== 'success') return;
+
+        var visibility = 'hidden';
+
+        if(data.isMaintenance){
+            visibility = 'visible';
+        }
+
+        $('.c-headerBar__isMaintenance').css('visibility',visibility);
+
+        setTimeout(getMaintenanceMode,20000);
+    };
+
+    var getMaintenanceMode = function(){
+        $.getJSON(
+            getMaintenanceUrl,
+            callback
+        );
+    };
+
+    getMaintenanceMode();
+};

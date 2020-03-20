@@ -31,6 +31,7 @@ file that was distributed with this source code.
                     'ECCUBE-CSRF-TOKEN': $('meta[name="eccube-csrf-token"]').attr('content')
                 }
             });
+            checkMaintenance('{{ url('admin_content_maintenance_check') }}');
         });
     </script>
     {# プラグイン用styleseetやmetatagなど #}
@@ -44,6 +45,10 @@ file that was distributed with this source code.
         </div>
         <a class="c-headerBar__toggleBtn"><i class="fa fa-bars" aria-hidden="true"></i></a>
         <a class="c-headerBar__shopTitle" href="{{ url('homepage') }}" target="_blank"><span>{{ BaseInfo.shop_name }}</span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <div class="c-headerBar__isMaintenance">
+            <i class="fa fa-warning fa-lg mr-2"></i>
+            <span>{{ 'admin.common.is_maintenance'|trans }}</span>
+        </div>
         <a class="c-headerBar__userMenu"
            data-container="body"
            data-toggle="popover"
