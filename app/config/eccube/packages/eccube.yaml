@@ -110,6 +110,7 @@ parameters:
     # メールアドレスをRFC準拠でチェックするか true: チェックする、false: チェックしない
     eccube_rfc_email_check: false
     eccube_package_api_url: '%env(ECCUBE_PACKAGE_API_URL)%'
+    eccube_maintenance_check_url: '/%eccube_admin_route%/content/maintenance_check'
     # 注文番号のフォーマット. 以下のフォーマットが利用可能です. フォーマットを空にした場合, dtb_order.idを出力します.
     # {yyyy} : 西暦(4桁)
     # {yy}: 西暦(2桁)

@@ -57,10 +57,16 @@ $request = Request::createFromGlobals();
 
 $maintenanceFile = env('ECCUBE_MAINTENANCE_FILE_PATH', __DIR__.'/.maintenance');
 
+$pathInfo = \rawurldecode($request->getPathInfo());
+$adminPath = env('ECCUBE_ADMIN_ROUTE', 'admin');
+$adminPath = '/'.\trim($adminPath, '/').'/';
+
+if( $pathInfo === $adminPath.'content/maintenance_check'){
+    header('Content-type: application/json');
+    echo json_encode(['isMaintenance'=>file_exists($maintenanceFile)]);
+    return;
+}
 if (file_exists($maintenanceFile)) {
-    $pathInfo = \rawurldecode($request->getPathInfo());
-    $adminPath = env('ECCUBE_ADMIN_ROUTE', 'admin');
-    $adminPath = '/'.\trim($adminPath, '/').'/';
     if (\strpos($pathInfo, $adminPath) !== 0) {
         $locale = env('ECCUBE_LOCALE');
         $templateCode = env('ECCUBE_TEMPLATE_CODE');

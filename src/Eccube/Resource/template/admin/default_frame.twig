@@ -31,7 +31,7 @@ file that was distributed with this source code.
                     'ECCUBE-CSRF-TOKEN': $('meta[name="eccube-csrf-token"]').attr('content')
                 }
             });
-            checkMaintenance('{{ url('admin_content_maintenance_check') }}');
+            checkMaintenance('{{ eccube_config.eccube_maintenance_check_url }}');
         });
     </script>
     {# プラグイン用styleseetやmetatagなど #}

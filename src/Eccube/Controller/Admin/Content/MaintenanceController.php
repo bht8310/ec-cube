@@ -72,18 +72,4 @@ class MaintenanceController extends AbstractController
             'isMaintenance' => $isMaintenance,
         ];
     }
-
-    /**
-     * メンテナンス状態を取得する
-     *
-     * @Route("/%eccube_admin_route%/content/maintenance_check", name="admin_content_maintenance_check")
-     */
-    public function check()
-    {
-        $isMaintenance = $this->systemService->isMaintenanceMode();
-
-        return $this->json([
-            'isMaintenance' => $isMaintenance
-        ]);
-    }
 }
