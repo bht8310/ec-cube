@@ -60,13 +60,16 @@ $maintenanceFile = env('ECCUBE_MAINTENANCE_FILE_PATH', __DIR__.'/.maintenance');
 $pathInfo = \rawurldecode($request->getPathInfo());
 $adminPath = env('ECCUBE_ADMIN_ROUTE', 'admin');
 $adminPath = '/'.\trim($adminPath, '/').'/';
+$maintenanceCheckUrl = env('ECCUBE_MAINTENANCE_CHECK_URL',$adminPath.'content/maintenance_check');
 
-if( $pathInfo === $adminPath.'content/maintenance_check'){
+if( $pathInfo === $maintenanceCheckUrl){
     header('Content-type: application/json');
     echo json_encode(['isMaintenance'=>file_exists($maintenanceFile)]);
     return;
 }
+
 if (file_exists($maintenanceFile)) {
+
     if (\strpos($pathInfo, $adminPath) !== 0) {
         $locale = env('ECCUBE_LOCALE');
         $templateCode = env('ECCUBE_TEMPLATE_CODE');

@@ -13,6 +13,7 @@ parameters:
     env(ECCUBE_PACKAGE_API_URL): 'https://package-api.ec-cube.net'
     env(ECCUBE_OWNERS_STORE_URL): 'https://www.ec-cube.net'
     env(ECCUBE_MAINTENANCE_FILE_PATH): '%kernel.project_dir%/.maintenance'
+    env(ECCUBE_MAINTENANCE_CHECK_URL): '/%env(ECCUBE_ADMIN_ROUTE)%/content/maintenance_check'
 
     # EC-CUBE parameter
     eccube_database_url: '%env(DATABASE_URL)%'
@@ -110,7 +111,7 @@ parameters:
     # メールアドレスをRFC準拠でチェックするか true: チェックする、false: チェックしない
     eccube_rfc_email_check: false
     eccube_package_api_url: '%env(ECCUBE_PACKAGE_API_URL)%'
-    eccube_maintenance_check_url: '/%eccube_admin_route%/content/maintenance_check'
+    eccube_maintenance_check_url: '%env(ECCUBE_MAINTENANCE_CHECK_URL)%'
     # 注文番号のフォーマット. 以下のフォーマットが利用可能です. フォーマットを空にした場合, dtb_order.idを出力します.
     # {yyyy} : 西暦(4桁)
     # {yy}: 西暦(2桁)
