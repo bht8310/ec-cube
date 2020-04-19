@@ -136,7 +136,12 @@ file that was distributed with this source code.
             $('.slideThumb').on('click', function() {
                 var index = $(this).attr('data-index');
                 $('.item_visual').slick('slickGoTo', index, false);
-            })
+            });
+
+            $('.slick-list').on('click',function(){
+                $('.item_visual').slick('slickNext');
+            });
+
         });
     </script>
     <script>
